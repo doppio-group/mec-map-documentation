@@ -160,7 +160,7 @@ function download(filename, text) {
     element.click();
 
     document.body.removeChild(element);
-    $("#downloadModal").modal('toggle');
+    $("#downloadedModal").modal('toggle');
 }
 
 
@@ -433,19 +433,25 @@ function updatePDF() {
 
                     //* Check Variable to Parameter mapping
                     var variableToParameterLinks = linkMap["VP"]
+                    if (variableToParameterLinks == undefined) variableToParameterLinks = []
+
                     if (variableToParameterLinks)
                         variableToParameterLinks = variableToParameterLinks.filter(arr => arr[1] in functionInputParameters)
-                    // console.log(variableToParameterLinks)
+                    console.log(variableToParameterLinks)
 
                     var constantToParameterLinks = linkMap["KP"]
+                    if (constantToParameterLinks == undefined) constantToParameterLinks = []
+
                     if (constantToParameterLinks)
                         constantToParameterLinks = constantToParameterLinks.filter(arr => arr[1] in functionInputParameters)
-                    // console.log(constantToParameterLinks)
+                    console.log(constantToParameterLinks)
 
                     var schemaToParameterLinks = linkMap["MP"]
+                    if (schemaToParameterLinks == undefined) schemaToParameterLinks = []
+
                     if (schemaToParameterLinks)
                         schemaToParameterLinks = schemaToParameterLinks.filter(arr => arr[1] in functionInputParameters)
-                    // console.log(schemaToParameterLinks)
+                    console.log(schemaToParameterLinks)
 
 
                     if (variableToParameterLinks.length > 0 || constantToParameterLinks.length > 0 || schemaToParameterLinks.length > 0) {
@@ -659,12 +665,13 @@ function updatePDF() {
                     //* Check Variable to Parameter mapping
                     // console.log(linkMap["VP"])
                     var parameterToVariableLinks = linkMap["PV"]
+                    if (parameterToVariableLinks == undefined) parameterToVariableLinks = []
                     if (parameterToVariableLinks)
                         parameterToVariableLinks = parameterToVariableLinks.filter(arr => arr[0] in functionOutputParameters)
                     // console.log(parameterToVariableLinks)
 
                     var parameterToSchemaLinks = linkMap["PM"]
-
+                    if (parameterToSchemaLinks == undefined) parameterToSchemaLinks = []
                     if (parameterToSchemaLinks)
                         parameterToSchemaLinks = parameterToSchemaLinks.filter(arr => arr[0] in functionOutputParameters)
                     // console.log(parameterToSchemaLinks)
@@ -989,7 +996,6 @@ function updatePDF() {
         $(this).removeClass("editCodeButton")
         $(this).prop('title', 'Save the edited function code')
         $(this).addClass("saveCodeButton")
-        // console.log(functionID);
 
         originalEditedCode = document.getElementById("code-" + functionID).innerText
         document.getElementById("pre-" + functionID).contentEditable = "true"
