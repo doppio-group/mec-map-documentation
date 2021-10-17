@@ -91,10 +91,10 @@ function parseMapFile(mapFileString) {
 
         var schemaInList = xmlDocument.getElementsByTagName("SchemaIn")[1].children
         for (var i = 1; i < schemaInList.length; i++) {
-            var variableName = schemaInList[i].children[0].innerHTML
-            var variableValue = schemaInList[i].children[1].innerHTML
-            var variableType = schemaInList[i].children[2].innerHTML
-            var variableID = variablesList[i].children[4].attributes[0].nodeValue
+            // var variableName = schemaInList[i].children[0].innerHTML
+            // var variableValue = schemaInList[i].children[1].innerHTML
+            // var variableType = schemaInList[i].children[2].innerHTML
+            // var variableID = variablesList[i].children[4].attributes[0].nodeValue
 
             var schemaInID = schemaInList[i].children[1].attributes[0].nodeValue
             var schemaInType = schemaInList[i].children[2].innerHTML
@@ -109,10 +109,10 @@ function parseMapFile(mapFileString) {
             // console.log(xmlDocument.getElementsByTagName("SchemaOut"))
             schemaOutList = xmlDocument.getElementsByTagName("SchemaOut")[1].children
             for (var i = 1; i < schemaOutList.length; i++) {
-                var variableName = schemaOutList[i].children[0].innerHTML
-                var variableValue = schemaOutList[i].children[1].innerHTML
-                var variableType = schemaOutList[i].children[2].innerHTML
-                var variableID = variablesList[i].children[4].attributes[0].nodeValue
+                // var variableName = schemaOutList[i].children[0].innerHTML
+                // var variableValue = schemaOutList[i].children[1].innerHTML
+                // var variableType = schemaOutList[i].children[2].innerHTML
+                // var variableID = variablesList[i].children[4].attributes[0].nodeValue
 
                 var schemaOutID = schemaOutList[i].children[1].attributes[0].nodeValue
                 var schemaOutType = schemaOutList[i].children[2].innerHTML
@@ -437,21 +437,21 @@ function updatePDF() {
 
                     if (variableToParameterLinks)
                         variableToParameterLinks = variableToParameterLinks.filter(arr => arr[1] in functionInputParameters)
-                    console.log(variableToParameterLinks)
+                    // console.log(variableToParameterLinks)
 
                     var constantToParameterLinks = linkMap["KP"]
                     if (constantToParameterLinks == undefined) constantToParameterLinks = []
 
                     if (constantToParameterLinks)
                         constantToParameterLinks = constantToParameterLinks.filter(arr => arr[1] in functionInputParameters)
-                    console.log(constantToParameterLinks)
+                    // console.log(constantToParameterLinks)
 
                     var schemaToParameterLinks = linkMap["MP"]
                     if (schemaToParameterLinks == undefined) schemaToParameterLinks = []
 
                     if (schemaToParameterLinks)
                         schemaToParameterLinks = schemaToParameterLinks.filter(arr => arr[1] in functionInputParameters)
-                    console.log(schemaToParameterLinks)
+                    // console.log(schemaToParameterLinks)
 
 
                     if (variableToParameterLinks.length > 0 || constantToParameterLinks.length > 0 || schemaToParameterLinks.length > 0) {
