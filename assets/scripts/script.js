@@ -1030,7 +1030,7 @@ function updatePDF() {
 
     $(document).on("click", ".saveChangesButton", function () {
         var clickedID = $(this)[0].id;
-        if (! clickedID.toString().includes("-")) return
+        if (!clickedID.toString().includes("-")) return
         var functionType = $(this).attr("functionType")
         console.log(clickedID)
         var functionID = clickedID.split("-")[1]
@@ -1127,15 +1127,23 @@ function uploadFile() {
         mappingLayout.removeChild(mappingLayout.lastChild);
     }
     var mapContent = document.getElementById('mapContent');
-    while (mapContent.lastChild.id != "mappingLayout") {
+    while (mapContent.children.length > 0) {
         mapContent.removeChild(mapContent.lastChild);
     }
-    for (let index = 0; index < 4; index++) {
-        var mapContent = document.getElementById('mapContent');
-        if (mapContent.children[0].id != "mappingLayout")
-            mapContent.removeChild(mapContent.children[0]);
+    // for (let index = 0; index < 4; index++) {
+    //     var mapContent = document.getElementById('mapContent');
+    //     if (mapContent.children[0].id != "mappingLayout")
+    //         mapContent.removeChild(mapContent.children[0]);
 
-    }
+    // }
+
+    var mappingLayoutDiv = document.createElement("div")
+    mappingLayoutDiv.className = "mappingLayout"
+    mappingLayoutDiv.id = "mappingLayout"
+
+    var mapContent = document.getElementById('mapContent');
+    mapContent.appendChild(mappingLayoutDiv)
+
 
     document.getElementById("todayDate").innerHTML = "";
     document.getElementById("mapName").innerHTML = "";
