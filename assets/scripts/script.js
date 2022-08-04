@@ -13,6 +13,7 @@ var schemaOutMap = {}
 var linkMap = {}
 var headerColor = document.getElementById("colorpicker").value
 var originalEditedCode = ""
+var logoFile = ""
 removeCommentedCode = false
 
 function parseMapFile(mapFileString) {
@@ -1223,10 +1224,11 @@ function uploadFile() {
     const selectedFile = document.getElementById('fileInput').files
     var authorName = document.getElementById("authorInput").value
 
-    const logoFile = document.getElementById('logoInput').files
+    // const logoFile = document.getElementById('logoInput').files
     const customerLogoFile = document.getElementById('customerLogoInput').files
 
-    // console.log(logoFile, customerLogoFile)
+    // console.log(logoFile)
+    // console.log()
 
     if (selectedFile.length > 0 && authorName.trim() != "") {
         var myFile = selectedFile[0];
@@ -1253,10 +1255,12 @@ function uploadFile() {
                 watermarkAuthor.id = "watermarkAuthor";
                 watermarkDiv.appendChild(watermarkAuthor);
 
+                console.log(logoFile)
+
                 if (logoFile.length > 0) {
-                    document.getElementById("logo").src = URL.createObjectURL(logoFile[0])
+                    document.getElementById("logo").src = logoFile
                     document.getElementById("logo").style.visibility = "visible"
-                    var src = URL.createObjectURL(logoFile[0]);
+                    var src = logoFile;
                     console.log(src)
                     document.body.style.background = 'url(' + src + ') repeat 0 0';
 
@@ -1450,5 +1454,11 @@ function shadeBlendConvert(p, from, to) {
         // console.log(loopElements[index])
         loopElements[index].removeEventListener("click", () => { })
     }
+
+    
+    fetch('assets/images/doppio-logo.png').then(response => {
+        // console.log(response.url);
+        logoFile = response.url;
+    })
 
 }());
