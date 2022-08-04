@@ -1,0 +1,876 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script');
+@import url('https://fonts.googleapis.com/css2?family=Birthstone');
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+/* @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css"; */
+
+html, body {
+    /* font-family: 'Poppins', sans-serif !important;
+     */
+    font-family: 'Poppins', sans-serif !important;
+    margin: 0 !important;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    -webkit-print-color-adjust: exact;
+    scroll-behavior: smooth !important;
+}
+
+@media print {
+    * {
+        overflow: visible !important;
+    }
+
+    @page {
+        margin: 0;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        size: 7in 9.25in;
+    }
+
+    body:before {
+        content: '\0041\006a\0061\0079\0020\0059\0061\0064\0075\006b\0072\0069\0073\0068\006e\0061\006e';
+        white-space: pre;
+        font-family: 'Poppins', sans-serif !important;
+        position: fixed !important;
+        top: 79% !important;
+        left: 57% !important;
+        z-index: 99;
+    
+        color: #94a0b4;
+        font-size: 24px;
+        font-weight: 500px;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        opacity: 0.1 !important;
+        /* transform: rotate(-45deg); */
+    }
+
+    .printerDiv {
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+    .editCodeClass {
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+    .coverPage {
+        display: block;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 100%;
+        max-height: 100%;
+        /* max-height: 29.7cm; */
+    }
+
+    #editLink {
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+    #deleteLink {
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+    .split {
+        position: relative !important;
+    }
+
+    .left {
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+    .right {
+        position: relative !important;
+        width: 100% !important;
+        left: 50%;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        transform: translate(-50%, 0%);
+        overflow-y: auto;
+    }
+
+    .mapPDF {
+        padding-left: 2vw;
+        padding-right: 2vw;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+    }
+
+    #documentationTitle {
+        text-align: center !important;
+        /* max-width: 80% !important; */
+        word-wrap: break-word !important;
+        font-size: 1.2rem;
+    }
+
+    #mapName {
+        text-align: center !important;
+        /* max-width: 80% !important; */
+        word-wrap: break-word !important;
+        font-size: 1.25rem;
+    }
+
+    .pagebreak {
+        clear: both !important;
+        display: block !important;
+        page-break-after: always !important;
+    }
+
+    table {
+        table-layout: fixed !important;
+        margin-right: 10vw !important;
+        overflow: auto !important;
+        word-wrap: break-word !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        padding: 24px 12px !important;
+        box-sizing: border-box !important;
+        border-radius: 3px !important;
+        /* box-shadow: 0px 4px 0px 2px rgba(0, 0, 0, 0.1); */
+        overflow-x: hidden !important;
+        width: 100% !important;
+        white-space: pre-wrap !important;
+        /* css-3 */
+        white-space: -moz-pre-wrap !important;
+        /* Mozilla, since 1999 */
+        white-space: -pre-wrap !important;
+        /* Opera 4-6 */
+        white-space: -o-pre-wrap !important;
+        /* Opera 7 */
+        word-wrap: break-word !important;
+        text-align: left !important;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    td {
+        /* white-space: pre-wrap; */
+        /* css-3 */
+        white-space: -moz-pre-wrap !important;
+        /* Mozilla, since 1999 */
+        white-space: -pre-wrap !important;
+        /* Opera 4-6 */
+        white-space: -o-pre-wrap !important;
+        /* Opera 7 */
+        word-wrap: break-word !important;
+    }
+
+    /* tr:nth-child(odd) {
+        background-color: grey !important;
+    } */
+
+    #mapAuthor {
+        font-size: 1.5em;
+        word-break: break-all;
+    }
+
+    #logo, #customerLogo {
+        max-width: 60%;
+        max-height: 10%;
+    }
+
+    ul {
+        display: block !important;
+    }
+
+    .collapseIcon {
+        display: none !important;
+    }
+
+    /* body:after {
+        content: '';
+        white-space: pre;
+        background: image();
+        font-family: 'Poppins', sans-serif !important;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 20%;
+        right: 0;
+        z-index: 99;
+
+        color: #94a0b4;
+        font-size: 48px;
+        font-weight: 500px;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        opacity: 0.1;
+        transform: rotate(-45deg);
+    } */
+
+    /* body:before {
+        content: 'Ajay Yadukrishnan';
+        white-space: pre;
+        font-family: 'Poppins', sans-serif !important;
+        position: fixed;
+        top: 30%;
+        bottom: 0;
+        left: 40%;
+        right: 0;
+        z-index: 99;
+
+        color: #94a0b4;
+        font-size: 36px;
+        font-weight: 500px;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        opacity: 0.1;
+        transform: rotate(-45deg);
+    } */
+
+    #watermarkImage {
+        font-size: 24px;
+        position: fixed !important;
+        top: 65% !important;
+        left: 5% !important;
+        z-index: 1;
+        opacity: 0.05 !important;
+        pointer-events:none;
+        /* transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg); */
+    }
+    
+    #watermarkAuthor {
+        color: #bbb;
+        font-size: 24px;
+        position: fixed !important;
+        top: 63%;
+        left: 78%;
+        z-index: 1;
+        opacity: 0.2;
+        pointer-events:none;
+        /* transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg); */
+    }
+
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.left {
+    left: 0;
+    background-color: white;
+}
+
+.right {
+    right: 0;
+    background-color: white;
+    margin: auto;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    text-align: justify;
+    word-wrap: break-word;
+    display: block;
+}
+
+.centered img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    color: #632F94;
+}
+
+.subtitle {
+    font-size: 28px;
+    font-family: 'Dancing Script', cursive;
+    color: #632F94;
+}
+
+.authorDiv {
+    color: #632F94;
+}
+
+.authorLabel {
+    color: #632F94 !important;
+}
+
+.fileDiv {
+    color: #632F94;
+}
+
+/* .customButton, .customButton:hover, .customButton:active, .customButton:focus {
+    color: #632F94;
+    background: #fff;
+    background-color: #fff;
+} */
+
+.input-field {
+    color: #632F94 !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.input-field input[type=text]:focus+label {
+    color: #632F94 !important;
+}
+
+.input-field input[type=text]:focus {
+    padding-left: 1vw;
+    border: solid 2px #632F94;
+    border-radius: 5px;
+    border-bottom: 1px solid #632F94 !important;
+    box-shadow: 0 1px 0 0 #632F94 !important;
+}
+
+.file-path input[type=text]:focus+label {
+    color: #632F94 !important;
+}
+
+.file-path {
+    padding-left: 1vw;
+    border: solid 2px #632F94;
+    border-radius: 5px;
+    border-bottom: 1px solid #632F94 !important;
+    box-shadow: 0 1px 0 0 #632F94 !important;
+}
+
+.mappingElement{
+    cursor: pointer;
+    position: absolute;
+    z-index: 100 !important;
+}
+
+.mappingElement::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.loopElement {
+    /* cursor: pointer; */
+    width: fit-content;
+    z-index: 99 !important;
+}
+
+.colorPickerDiv {
+    padding-left: 1vw;
+}
+
+.colorpickerLabel {
+    font-weight: bold;
+    color: #632F94;
+    font-size: 1em;
+}
+
+#colorpicker {
+    top: 10vh !important;
+}
+
+.submitDiv {
+    padding-left: 0.8vw;
+}
+
+/* .submitButton, .submitButton:hover, .submitButton:active, .submitButton:focus {
+    color: #632F94;
+    background: #fff;
+    background-color: #fff;
+} */
+
+pre {
+    overflow: auto;
+    word-wrap: break-word;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 24px 12px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    box-shadow: 0px 4px 0px 2px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    width: 100%;
+    white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.functionHeader {
+    padding-top: 300pt;
+    margin-top: -300pt;
+}
+
+.checkBoxDiv {
+    padding-top: 1vw;
+    padding-left: 1vw;
+}
+
+#commentCheckbox:checked {
+    color: #632F94;
+    background-color: #632F94;
+    border-color: #632F94;
+}
+
+table {
+    table-layout: fixed;
+    margin-right: 10vw;
+    overflow: auto;
+    word-wrap: break-word;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 24px 12px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    /* box-shadow: 0px 4px 0px 2px rgba(0, 0, 0, 0.1); */
+    overflow-x: hidden;
+    width: 100%;
+    white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    text-align: left;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5vh;
+}
+
+th {
+    padding: 15px;
+}
+
+td {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.functionDescription {
+    /* display: inline-block; */
+    word-wrap: break-word !important;
+}
+
+.functionDescription::after {
+    content: "\a";
+    white-space: pre;
+}
+
+/* table::after{
+    content: "\a\a";
+    white-space: pre;
+} */
+
+td {
+    /* white-space: pre-wrap; */
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+}
+
+/* tr:nth-child(odd) {
+    background-color: lightblue !important;
+} */
+
+/* tr:nth-child(odd) {
+    background-color: grey !important;
+} */
+
+.printerDiv {
+    float: right;
+}
+
+/* .printerButton {
+    padding-bottom: 3.5vh;
+} */
+
+.btn {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: #632F94;
+    background: none;
+    cursor: pointer;
+    padding-top: 2px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.btn-1a:hover {
+    background: #632F94;
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn:before {
+    font-family: 'icomoon';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+.btn-1 {
+    border: 3px solid #fff;
+    color: #632F94;
+}
+
+/* Button 1a */
+
+.btn-1a:hover, .btn-1a:active, .btn-1a:focus {
+    color: #632F94;
+    background: #fff;
+}
+
+#todayDate {
+    font-size: 1.5em;
+}
+
+#mapAuthor {
+    font-size: 1.5em;
+    word-break: break-all;
+}
+
+#logo, #customerLogo {
+    max-width: 60%;
+    max-height: 10%;
+}
+
+#documentationTitle {
+    text-align: center !important;
+    /* max-width: 80% !important; */
+    word-wrap: break-word !important;
+    font-size: 1.2rem;
+}
+
+#mapName {
+    text-align: center !important;
+    /* max-width: 80% !important; */
+    word-wrap: break-word !important;
+    font-size: 1.25rem;
+}
+
+.parent {
+    display: flex;
+    flex-grow: 0;
+}
+
+.editDescriptionButton {
+    float: right;
+    /* left: 5vw; */
+    bottom: 0.2vw;
+    text-transform: none;
+}
+
+/* #submitButton {
+    text-transform: none;
+    background-color: #632F94;
+} */
+
+#printerButton {
+    text-transform: none;
+    /* background-color: #632F94 !important; */
+}
+
+#deleteLink {
+    margin-left: auto !important;
+}
+
+.modificationDiv {
+    margin-left: auto !important;
+}
+
+.editButton {
+    background-color: white !important;
+    position: relative;
+    content: "\f007";
+    font-family: 'Font Awesome\ 5 Free' !important;
+    bottom: 5px !important;
+    margin-left: auto !important;
+}
+
+.deleteButton {
+    background-color: white !important;
+    position: relative;
+    content: "\f007";
+    font-family: 'Font Awesome\ 5 Free' !important;
+    bottom: 4px !important;
+    margin-left: auto !important;
+}
+
+.githubButton {
+    outline: none !important;
+    width: fit-content;
+    box-shadow: none !important;
+    border: none !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.bi-github {
+    padding-bottom: 2px;
+    width: 16px;
+}
+
+/* .customButton {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    text-transform: none;
+    background-color: #632F94 !important;
+    outline: none !important;
+} */
+
+.customDangerButton {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    text-transform: none;
+    background-color: red !important;
+    outline: none !important;
+}
+
+.customSuccessButton {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    text-transform: none;
+    background-color: green !important;
+    outline: none !important;
+}
+
+.btn {
+    outline: none !important;
+    border: none !important;
+}
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.close {
+    background-color: white;
+    border: none !important;
+}
+
+.hitCount {
+    width: 15vw !important;
+}
+
+.horizontalLine {
+    background-color: black;
+    border: 0 none;
+    color: black;
+    height: 10px;
+}
+
+
+
+.tree {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #fbfbfb;
+    border: 1px solid #999;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+
+.tree li {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 5px 0 5px;
+    position: relative
+}
+
+.tree li::before,
+.tree li::after {
+    content: '';
+    left: -10px;
+    position: absolute;
+    right: auto
+}
+
+.tree li::before {
+    /* padding-left: 10px; */
+    border-left: 1px solid #999;
+    bottom: 50px;
+    height: 100%;
+    top: 0;
+}
+
+.tree li::after {
+    box-sizing: border-box;
+    border-left: 1px solid #999;
+    border-bottom: 1px solid #999;
+    border-bottom-left-radius: 10px;
+    height: 34px;
+    top: 0px;
+    width: 20px;
+}
+
+.tree li span {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    /* border: 1px solid #999; */
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 6px;
+    text-decoration: none;
+}
+
+.tree li.parent_li>span {
+    cursor: pointer;
+}
+
+.tree>ul>li::before,
+.tree>ul>li::after {
+    border: 0;
+}
+
+.tree li:last-child::before {
+    height: 14px;
+}
+
+.tree li:not(.parent_li) span {
+    position: relative;
+}
+
+.tree li span:before {
+    content: "";
+    position: absolute;
+    /* border-width - 1px */
+    left: -4px;
+    /* bottom: calc(50%); */
+    top: 18px;
+    border-color: transparent;
+    border-left-color: #999;
+    border-style: inherit;
+    border-width: 4px;
+}
+
+/* another styles for parent_li immediate span children */
+.tree li.parent_li>span:before {
+    bottom: initial;
+    left: 2px;
+    top: 20.5px;
+}
+
+/* hide arrow for immediate children */
+.tree>ul>li>span:before {
+    display: none;
+}
+
+.tree li.parent_li>span:hover,
+.tree li.parent_li>span:hover+ul li span {
+    background: #eee;
+    border: 1px solid #94a0b4;
+    color: #000;
+}
+
+
+#watermarkImage {
+    font-size: 24px;
+    position: fixed !important;
+    top: 60%;
+    left: 60%;
+    z-index: 1;
+    opacity: 0.05 !important;
+    pointer-events:none;
+    /* transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg); */
+}
+
+body::after{
+
+}
+
+#watermarkAuthor {
+    /* content: 'Ajay Yadukrishnan';
+    white-space: pre; */
+    color: #bbb;
+    font-size: 24px;
+    position: fixed !important;
+    top: 63%;
+    left: 78%;
+    z-index: 1;
+    opacity: 0.4;
+    pointer-events:none;
+    /* transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg); */
+}
+
+body:before {
+    content: '\0041\006a\0061\0079\0020\0059\0061\0064\0075\006b\0072\0069\0073\0068\006e\0061\006e';
+    white-space: pre;
+    font-family: 'Poppins', sans-serif !important;
+    position: fixed !important;
+    top: 72%;
+    left: 78%;
+    z-index: 99;
+
+    color: #94a0b4;
+    font-size: 24px;
+    font-weight: 500px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    opacity: 0.3;
+    /* transform: rotate(-45deg); */
+}

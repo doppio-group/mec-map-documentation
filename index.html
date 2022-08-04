@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MEC Map Documentation</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico?">
+    <link rel="stylesheet" href="assets/styles/index.css">
+    <link rel="stylesheet" href="assets/dependencies/bootstrap/css/bootstrap-social.css" />
+    <link rel="stylesheet" href="assets/dependencies/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/dependencies/fontawesome/css/all.css">
+    <script src="assets/dependencies/jQuery/jquery-3.6.0.js"></script>
+    <script src="assets/dependencies/beautify/beautify.min.js"></script>
+    <script src="assets/dependencies/moment/moment.min.js"></script>
+    <script src="assets/dependencies/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <!--JavaScript at end of body for optimized loading-->
+
+    <div class="modal" data-bs-backdrop="static" id="functionModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Function Name and Description</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="functionNameInput" class="form-label">Function Name</label>
+                    <input type="text" class="form-control" id="functionNameInput" placeholder="Function Name" />
+                    <br />
+                    <label for="functionDescriptionInput" class="form-label">Function Description</label>
+                    <textarea class="form-control" id="functionDescriptionInput" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary customButton" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary customButton saveChangesButton" id="saveEdit">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-bs-backdrop="static" id="errorModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Error</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>All mandatory fields have not been provided</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary customButton" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-bs-backdrop="static" id="downloadModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="downloadModalTitle">Download Map file?</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="downloadText">Do you want to download the updated .map file with the comments?</p>
+                    <p id="downloadText-1">Note: Only the Java function comments are updated.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary customButton" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-success customSuccessButton confirmDownloadButton"
+                        data-bs-dismiss="modal" id="confirmDownload">Yes, Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-bs-backdrop="static" id="downloadedModal" tabindex="-1" role="dialog"
+        aria-labelledby="downloadedModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="downloadedModalLongTitle">Download</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>The downloaded file is in UTF-8 format. Please change the encoding to UTF-16 BE BOM encoding
+                        using <a href="https://notepad-plus-plus.org/downloads/" target="_blank">Notepad++</a> before
+                        opening it in the
+                        MEC Mapper</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary customButton" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-bs-backdrop="static" id="confirm-delete" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalTitle">Delete Function?</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="deleteText">Are you sure you want to delete the function and it's components?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary customButton" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger customDangerButton confirmDeleteButton"
+                        data-bs-dismiss="modal" id="confirmDelete">Yes, Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="split left">
+
+        <!-- Modal -->
+
+        <h2 class="title">MEC Map Documentation</h2>
+        <p class="subtitle">An open source tool for MEC map documentation</p>
+        <br />
+        <div class="row">
+            <div class="form-group w-75">
+                <label for="authorInput" class="form-label">Author Name *</label>
+                <input type="text" class="form-control" id="authorInput" placeholder="Author Name">
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="form-group w-75">
+                <label for="fileInput" class="form-label">Select .map file *</label>
+                <input class="form-control form-control-sm" id="fileInput" type="file" accept=".map" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="form-group w-75">
+                <label for="logoInput" class="form-label">Select your logo</label>
+                <input class="form-control form-control-sm" id="logoInput" type="file"
+                    accept="image/png, image/gif, image/jpeg" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="form-group w-75">
+                <label for="customerLogoInput" class="form-label">Select the customer logo</label>
+                <input class="form-control form-control-sm" id="customerLogoInput" type="file"
+                    accept="image/png, image/gif, image/jpeg" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="form-group w-75">
+                <label for="mapDescriptionInput" class="form-label">Map Description</label>
+                <textarea class="form-control" id="mapDescriptionInput" rows="1"
+                    placeholder="Add a high-level description of the map"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="colorPickerDiv">
+                <label class="form-label" for="colorpicker">Color Picker:</label>
+                <input type="color" class="form-control form-control-color" id="colorpicker" value="#D5000E">
+            </div>
+            <div class="checkBoxDiv">
+                <input class="form-check-input" type="checkbox" value="" id="commentCheckbox" />
+                <label class="form-check-label" for="commentCheckbox">
+                    Remove commented code
+                </label>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="form-group w-10">
+                <button type="button" class="btn btn-primary" id="submitButton" type="submit" name="action"
+                    onclick="uploadFile()">Generate Documentation</button>
+            </div>
+        </div>
+        <br /><br />
+        <p>All comments starting with //! are considered as function descriptions</p>
+        <br />
+        <a class="input-group-text githubButton" href="https://github.com/ajayyadukrishnan" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-github"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                <span style="padding-left: 1vw; color:black">Ajay Yadukrishnan</span>
+        </a>
+    </div>
+
+    <div class="split right">
+        <div class="form-group w-10 printerDiv">
+            <!-- <button class="btn btn-primary" id="printerButton" onclick="window.print()">Print this page</button> -->
+            <a class="btn hoverButton" id="downloadButtonLink" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Download map file with updated comments"><i width="20px"
+                    class="fas fa-download fa-1x downloadButton" id="downloadButton"></i></a>
+            <a class="btn hoverButton" onclick="window.print()" id="printerButtonLink" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Print the document"><i width="20px"
+                    class="fas fa-print fa-1x printerButton" id="printerButton"></i></a>
+        </div>
+        <!-- <div class="printerDiv"><button class="btn btn-1 btn-1a printerButton" onclick="window.print()">Print this
+                page</button></div> -->
+        <br />
+        <br />
+        <!-- <br /><br /> -->
+        <div class="mapPDF" id="mapPDF">
+            <div class="coverPage">
+                <center>
+                    <img id="logo" src="#" style="width: 50%; height: 6%" />
+                    <br /><br /><br /><br />
+                    <h1 class="documentationTitle" id="documentationTitle" style="visibility: hidden;">MEC Map
+                        Documentation</h1>
+                    <hr class="horizontalLine" id="horizontalLine" style="visibility: hidden;" />
+                    <br /><br />
+                    <h1 class="mapName customColor mb-3" id="mapName"></h1>
+                    </h5>
+                    <img id="customerLogo" src="#" style="width: 50%; height: 6%" />
+                    <br /><br /><br /><br />
+                    <span id="todayDate"></span>
+                    <br /><br />
+                    <p class="mapAuthor mb-4" id="mapAuthor"></p>
+                    <br /><br />
+                </center>
+            </div>
+            <div class="pagebreak"></div>
+            <div class="mapContent" id="mapContent">
+                <div class="mappingLayout" id="mappingLayout"></div>
+            </div>
+
+        </div>
+    </div>
+    <div id="watermarkDiv"></div>
+
+
+
+
+
+    <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+
+
+    <script src="assets/scripts/script.js"></script>
+</body>
+
+</html>
